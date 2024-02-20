@@ -1,0 +1,18 @@
+a+0 +0 +0 +0 +0 +0 +0 +0 +0 +0          ; Add arr[0x0] (1 by default) to arr[0xA] 10 times
+b+a +a +a +b +b +b +a +0 +0 +0 +0 +0    ; Set arr[b] to -1 (FF) for subtraction
+0o                                      ; Print arr[0]
+a                                       ; Idc1 = a, 
+{                                       ; This will loop until arr[a] = 0
+2+0 o                                   ; Add 0 to 2
+0+2 o                                   ; Add 2 to 0, fibbonaci recurrence formula
+
+a+b                                     ; Decrement a by adding b (-1)
+}                                       ; End loop
+
++
+-
+s
+
+:
+I
+o
