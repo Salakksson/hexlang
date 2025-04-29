@@ -1,10 +1,5 @@
 #include <stdint.h>
 
-#define FLAG_HELP           "-help"
-#define FLAG_FILENAME       "-f"
-#define FLAG_INPUT          "-i"
-#define FLAG_INFFILE        "-if"
-
 #define FLAG_DEBUG          "-debug"   
 #define FLAG_ARRAY16        "-a16"
 #define FLAG_INT16          "-i16"

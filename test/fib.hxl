@@ -9,10 +9,4 @@ a                                       ; Idc1 = a,
 a+b                                     ; Decrement a by adding b (-1)
 }                                       ; End loop
 
-+
--
-s
 
-:
-I
-o

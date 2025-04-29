@@ -2,7 +2,7 @@
 void print_help()
 {
 	printf(
-		"Hexlang is a turing complete language which operates on a single array\n"
+		"Hexlang is a language which operates on a single array\n"
 		"It contains only 6 tokens: array indices, +, {, }, i, o\n"
 		"Array indices start from 0\n"
 		"x+y sets x to x+y, x and y being array indices\n"
@@ -10,6 +10,7 @@ void print_help()
 		"ix takes one byte of user input and stores it at x\n"
 		"ox output the value at x\n"
 		"Index 0 is initialised to 1 while the rest of the array is 0s\n"
+        "\n    For information on the compiler remove --help\n"
 	);
 }
 
@@ -42,36 +43,31 @@ int main(int argc, char** argv)
 	}
 	char* filename;
 	char* input;
-	bool isInput = false;
 	char* ifilename;
 	flag flags = 0;
 	bool error = false;
 	for (int i = 1; i < argc; i++)
 	{
-		if(!strcmp(argv[i], FLAG_HELP))
+		if(!strcmp(argv[i], "--help"))
 		{
 			print_help();
 			return 0;
 			continue;
 		}
-		if(!strcmp(argv[i], FLAG_FILENAME))
+		if(!strcmp(argv[i], "-f"))
 		{
 			if ((i+1) < argc)
 			{
 				filename = (char*)malloc(strlen(argv[i+1]) + 1);
 				strcpy(filename, argv[i+1]);
+                i++;
 				continue;
 			}
 			printf("Arg %d: ERROR: Failed to find filename\n", i+1);
 			continue;
 		}
-		if(!strcmp(argv[i], FLAG_INPUT))
+		if(!strcmp(argv[i], "-i"))
 		{
-			if(isInput)
-			{
-				printf("Arg %d: ERROR: Contraditing arguments", i+1);
-				continue;
-			}
 			if ((i+1) < argc)
 			{
 				filename = argv[i+1];
@@ -81,7 +77,7 @@ int main(int argc, char** argv)
 			error = true;
 			continue;
 		}
-		if(!strcmp(argv[i], FLAG_INFFILE))
+		if(!strcmp(argv[i], "-if"))
 		{
 			if ((i+1) < argc)
 			{
@@ -173,8 +169,9 @@ int main(int argc, char** argv)
 	char* code = (char*)malloc(len);
 	fread(code, 1, len, fp);
 	fclose(fp);
-
-	printf("test");
-	interpret(code, flags);
-
+    
+    printf("interpreting %s\n", filename);
+	interpret_debug(code, flags);
+    
+    printf("\nshit got interpreted dumbo\n");
 }
